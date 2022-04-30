@@ -1,9 +1,13 @@
 import React from "react";
 
+import Heading from "../components/Heading";
+import Navi from "../components/Navi";
+
 const Home = () => {
   return (
     <div>
-      <h1>Welcome to Live Notes</h1>
+      <Heading />
+      <Navi />
       <p>Welcome to the home page</p>
     </div>
   );
