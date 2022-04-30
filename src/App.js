@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
+
+// import Routes
+import Pages from "./pages";
 
 const App = () => {
   return (
     <div>
-      <h1>Welcome to Live Notes App!</h1>
+      <Pages />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
