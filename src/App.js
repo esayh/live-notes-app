@@ -9,7 +9,7 @@ import GlobalCSS from "./components/GlobalCSS";
 // import Routes
 import Pages from "./pages";
 
-const uri = process.env.API_URI;
+const uri = process.env.REACT_APP_KEY;
 
 const client = new ApolloClient({
   uri,
@@ -19,12 +19,10 @@ const client = new ApolloClient({
 
 const App = () => {
   return (
-    <div>
-      <ApolloProvider client={client}>
-        <GlobalCSS />
-        <Pages />
-      </ApolloProvider>
-    </div>
+    <ApolloProvider client={client}>
+      <GlobalCSS />
+      <Pages />
+    </ApolloProvider>
   );
 };
 
