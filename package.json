@@ -11,6 +11,7 @@
     "@types/react": "^18.0.8",
     "apollo": "^2.33.10",
     "apollo-link-context": "^1.0.20",
+    "date-fns": "^2.28.0",
     "dotenv": "^16.0.0",
     "graphql": "^16.4.0",
     "normalize.css": "^8.0.1",
