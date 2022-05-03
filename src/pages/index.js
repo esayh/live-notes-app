@@ -8,6 +8,7 @@ import Layout from "../components/Layout";
 import Home from "./home";
 import Mynotes from "./mynotes";
 import Faves from "./faves";
+import NoteID from "./note";
 
 const Pages = () => {
   return (
@@ -17,6 +18,7 @@ const Pages = () => {
           <Route exact path="/" element={<Home />} />
           <Route path="/mynotes" element={<Mynotes />} />
           <Route path="/faves" element={<Faves />} />
+          <Route path="/note/:id" element={<NoteID />} />
         </Routes>
       </Layout>
     </Router>

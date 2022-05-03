@@ -20,4 +20,20 @@ const GET_ALL_NOTES = gql`
   }
 `;
 
-export { GET_ALL_NOTES };
+const GET_NOTE = gql`
+  query note($id: ID!) {
+    note(id: $id) {
+      id
+      createdAt
+      content
+      favoriteCount
+      author {
+        username
+        id
+        avatar
+      }
+    }
+  }
+`;
+
+export { GET_ALL_NOTES, GET_NOTE };
