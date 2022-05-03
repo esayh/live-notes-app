@@ -9,6 +9,7 @@ import Home from "./home";
 import Mynotes from "./mynotes";
 import Faves from "./faves";
 import NoteID from "./note";
+import SignUp from "./signup";
 
 const Pages = () => {
   return (
@@ -19,6 +20,7 @@ const Pages = () => {
           <Route path="/mynotes" element={<Mynotes />} />
           <Route path="/faves" element={<Faves />} />
           <Route path="/note/:id" element={<NoteID />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </Layout>
     </Router>

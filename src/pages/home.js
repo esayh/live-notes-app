@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 
 import NoteFeed from "../components/NoteFeed";
-import LoadButton from "../components/LoadButton";
+import Button from "../components/Button";
 import { GET_ALL_NOTES } from "../gql/query";
 
 const Home = () => {
@@ -34,7 +34,7 @@ const Home = () => {
     <React.Fragment>
       <NoteFeed notes={data.noteFeed.notes} />
       {data.noteFeed.hasNextPage && (
-        <LoadButton onClick={handleFetch}>More notes</LoadButton>
+        <Button onClick={handleFetch}>More notes</Button>
       )}
     </React.Fragment>
   );
