@@ -1,5 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { IS_LOGGED_IN } from "../gql/query";
 
 // import app layout
 import Layout from "../components/Layout";
@@ -18,14 +25,42 @@ const Pages = () => {
       <Layout>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/mynotes" element={<Mynotes />} />
-          <Route path="/faves" element={<Faves />} />
+          <Route
+            path="/mynotes"
+            element={
+              <PrivateRoute>
+                <Mynotes />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/faves"
+            element={
+              <PrivateRoute>
+                <Faves />
+              </PrivateRoute>
+            }
+          />
           <Route path="/note/:id" element={<NoteID />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
         </Routes>
       </Layout>
     </Router>
+  );
+};
+
+const PrivateRoute = ({ children }) => {
+  const { loading, error, data } = useQuery(IS_LOGGED_IN);
+
+  if (loading) return <p>Loading ...</p>;
+
+  if (error) return <p>Error!</p>;
+
+  return (
+    <React.Fragment>
+      {data.isLoggedIn === true ? children : <Navigate to="/signin" />}
+    </React.Fragment>
   );
 };
 
