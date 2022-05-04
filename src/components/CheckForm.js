@@ -22,13 +22,14 @@ const Form = styled.form`
   }
 `;
 
-const NewUserForm = (props) => {
+const CheckForm = (props) => {
   const [values, setValues] = useState();
 
-  const handleTextChange = (e) => {
+  // update the state when a user types in the form
+  const handleTextChange = (event) => {
     setValues({
       ...values,
-      [e.target.id]: e.target.value,
+      [event.target.name]: event.target.value,
     });
   };
 
@@ -43,28 +44,28 @@ const NewUserForm = (props) => {
 
   return (
     <Wrapper>
-      <h2>Sign Up</h2>
+      {props.formType === "signup" ? <h2>Sign Up</h2> : <h2>Sign In</h2>}
       <Form onSubmit={handleSubmit}>
         {props.formType === "signup" && (
           <React.Fragment>
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="email">Email:</label>
             <input
               required
-              type="text"
-              id="username"
-              name="username"
-              placeholder="Username"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
               onChange={handleTextChange}
             />
           </React.Fragment>
         )}
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="username">Username:</label>
         <input
           required
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Email"
+          type="text"
+          id="username"
+          name="username"
+          placeholder="username"
           onChange={handleTextChange}
         />
         <label htmlFor="password">Password:</label>
@@ -82,4 +83,4 @@ const NewUserForm = (props) => {
   );
 };
 
-export default NewUserForm;
+export default CheckForm;

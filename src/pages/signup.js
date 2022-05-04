@@ -3,8 +3,8 @@ import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import { isLoggedInVar } from "../cache";
 
+import CheckForm from "../components/CheckForm";
 import { SIGN_UP } from "../gql/mutation";
-import NewUserForm from "../components/NewUserForm";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const SignUp = () => {
 
   return (
     <React.Fragment>
-      <NewUserForm action={signUp} formType="signup" />
+      <CheckForm action={signUp} formType="signup" />
       {loading && <p>Loading...</p>}
       {error && <p>Error creating account!</p>}
     </React.Fragment>

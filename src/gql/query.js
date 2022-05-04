@@ -36,4 +36,10 @@ const GET_NOTE = gql`
   }
 `;
 
-export { GET_ALL_NOTES, GET_NOTE };
+const IS_LOGGED_IN = gql`
+  {
+    isLoggedIn @client
+  }
+`;
+
+export { GET_ALL_NOTES, GET_NOTE, IS_LOGGED_IN };
