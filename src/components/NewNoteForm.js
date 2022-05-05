@@ -27,9 +27,19 @@ const NewNoteForm = (props) => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.action({
+      variables: {
+        ...value,
+      },
+    });
+  };
+
   return (
     <Container>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <TextArea
           required
           type="text"

@@ -1,10 +1,28 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useMutation } from "@apollo/client";
+import { useMutation, gql } from "@apollo/client";
 
 import NewNoteForm from "../components/NewNoteForm";
-import { NEW_NOTE } from "../gql/mutation";
-import { GET_NOTE } from "../gql/query";
+import { GET_NOTE, GET_MY_NOTES } from "../gql/query";
+
+const NEW_NOTE = gql`
+  mutation newNote($content: String!) {
+    newNote(content: $content) {
+      id
+      content
+      createdAt
+      favoriteCount
+      favoritedBy {
+        id
+        username
+      }
+      author {
+        username
+        id
+      }
+    }
+  }
+`;
 
 const NewNote = () => {
   const navigate = useNavigate();
@@ -13,9 +31,9 @@ const NewNote = () => {
   });
 
   const [data, { loading, error }] = useMutation(NEW_NOTE, {
-    refetchQueries: [{ query: GET_NOTE }],
+    refetchQueries: [{ query: GET_NOTE }, { GET_MY_NOTES }],
     onCompleted: (data) => {
-      navigate(`note/${data.newNote.id}`);
+      navigate(`/note/${data.newNote.id}`);
     },
   });
   return (
