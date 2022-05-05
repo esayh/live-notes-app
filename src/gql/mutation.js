@@ -19,6 +19,12 @@ const EDIT_NOTE = gql`
   }
 `;
 
+const DELETE_NOTE = gql`
+  mutation deleteNote($id: ID!) {
+    deleteNote(id: $id)
+  }
+`;
+
 const SIGN_UP = gql`
   mutation signUp($email: String!, $username: String!, $password: String!) {
     signUp(email: $email, username: $username, password: $password)
@@ -31,4 +37,4 @@ const SIGN_IN = gql`
   }
 `;
 
-export { SIGN_UP, SIGN_IN, EDIT_NOTE };
+export { SIGN_UP, SIGN_IN, EDIT_NOTE, DELETE_NOTE };

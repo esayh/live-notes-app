@@ -17,7 +17,7 @@ const NoteFeed = ({ notes }) => {
       {notes.map((note) => (
         <Wrapper key={note.id}>
           <Note note={note} />
-          <Link to={`note/${note.id}`}>View Note</Link>
+          <Link to={`/note/${note.id}`}>View Note</Link>
         </Wrapper>
       ))}
     </div>

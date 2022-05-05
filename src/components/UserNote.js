@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import { GET_USER_DATA } from "../gql/query";
 
+import DeleteNote from "./DeleteNote";
+
 const UserNote = (props) => {
   const { loading, error, data } = useQuery(GET_USER_DATA);
 
@@ -17,7 +19,8 @@ const UserNote = (props) => {
       <br />
       {data.me.id === props.note.author.id && (
         <React.Fragment>
-          <Link to={`/editnote/${props.note.id}`}>Edit</Link>
+          <Link to={`/editnote/${props.note.id}`}>Edit</Link>{" "}
+          <DeleteNote noteId={props.note.id} />
         </React.Fragment>
       )}
     </React.Fragment>
