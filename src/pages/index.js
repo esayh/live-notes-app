@@ -15,6 +15,7 @@ import Layout from "../components/Layout";
 import Home from "./home";
 import Mynotes from "./mynotes";
 import NewNote from "./newnote";
+import EditNote from "./editnote";
 import Faves from "./faves";
 import NoteID from "./note";
 import SignUp from "./signup";
@@ -47,6 +48,14 @@ const Pages = () => {
             element={
               <PrivateRoute>
                 <NewNote />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/editnote/:id"
+            element={
+              <PrivateRoute>
+                <EditNote />
               </PrivateRoute>
             }
           />

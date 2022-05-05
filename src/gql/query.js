@@ -76,10 +76,28 @@ const GET_MY_FAVES = gql`
   }
 `;
 
+const GET_USER_DATA = gql`
+  query {
+    me {
+      id
+      favorites {
+        id
+      }
+    }
+  }
+`;
+
 const IS_LOGGED_IN = gql`
   {
     isLoggedIn @client
   }
 `;
 
-export { GET_ALL_NOTES, GET_NOTE, GET_MY_NOTES, GET_MY_FAVES, IS_LOGGED_IN };
+export {
+  GET_ALL_NOTES,
+  GET_NOTE,
+  GET_MY_NOTES,
+  GET_MY_FAVES,
+  GET_USER_DATA,
+  IS_LOGGED_IN,
+};
